@@ -60,10 +60,12 @@ def getInactivityPeriod(inactFile):
     Return the inactivity period from the inactivity file.
     '''
     f = open(inactFile)
-    INACT_TIME = f.readline()
+    INACT_TIME = int(f.readline())
     f.close()
 
-    return timedelta(seconds=int(INACT_TIME))
+    if not (1 <= INACT_TIME <= 86400):
+        raise Exception("Inactivity period should be between 1 and 86400 seconds")
+    return timedelta(seconds=INACT_TIME)
 
 def writeOutput(outputFile, output):
     '''

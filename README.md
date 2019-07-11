@@ -10,8 +10,6 @@ Here are some assupmtions for this coding challenge:
     3. Any invalid entry will be ignored, such as datetime with wrong format.
     4. Data size can fit into memory.
 
-# Unit Test
-
 # Solution
 
 I decided to build my code with Session object to keep track of the expiration time of the session. And since the output of the data depends on the ordering of input and expiration time, OrderedDict datatype is used to store these Session objects. OrderedDict has the advantages of O(1) runtime for get item, set item, and delete item while maintaining the inserting orders.
