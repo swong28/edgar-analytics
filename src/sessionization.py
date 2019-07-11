@@ -7,7 +7,8 @@ def readLogs(filename, INACT_TIME, outputFile):
     '''
     (str, timestamp, str) -> None
 
-    Process input files with out 
+    Process input files and stream them based on time and order of the 
+    entries.
     '''
 
     # format for datetime object
@@ -55,7 +56,7 @@ def readLogs(filename, INACT_TIME, outputFile):
 
 def getInactivityPeriod(inactFile):
     '''
-    str -> num
+    str -> timedelta
 
     Return the inactivity period from the inactivity file.
     '''
@@ -69,6 +70,9 @@ def getInactivityPeriod(inactFile):
 
 def writeOutput(outputFile, output):
     '''
+    str -> None
+
+    write to output file with output.
     '''
     f = open(outputFile, "a")
     f.write(output+'\n')
@@ -76,6 +80,9 @@ def writeOutput(outputFile, output):
 
 def writeAll(outputFile, sessions):
     '''
+    (str, OrderedDict) -> None
+    
+    Write all sessions in orderedDict into output file. 
     '''
     f = open(outputFile, "a")
     for _ip, session in sessions.items():
